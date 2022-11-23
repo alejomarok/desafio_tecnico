@@ -27,7 +27,7 @@ function App() {
 
     fetchPeople();
     fetchPlanets();
-
+    setLoading(false);
   }, [])
 
   console.log ('data', people);
@@ -39,11 +39,17 @@ function App() {
     <Router>   
       <Navbar />
       <Container>
+        {loading ? (
+          <Dimmer active inverted>
+          <Loader inverted>Loading</Loader>
+          </Dimmer>
+        ) : (
         <Routes>
           <Route exact path="/" element={<Home/>} />
           <Route exact path='/people' element={<People/>}/>
           <Route exact path="/planets" element={<Planets/>} />
         </Routes>
+        )}
       </Container>
     </Router>
 

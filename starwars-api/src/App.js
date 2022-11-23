@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
-import {BrowserRouter as Router, Switch, Route} from 'react-roter-dom'; 
-import { Container } from 'semantic-ui-react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
+import { Container, Dimmer, Loader } from 'semantic-ui-react';
 import Home from './components/Home';
 import People from './components/People';
 import Planets from './components/Planets';
@@ -39,17 +39,11 @@ function App() {
     <Router>   
       <Navbar />
       <Container>
-        <Switch>
-          <Route exact path='/'>
-            <Home />
-          </Route>
-          <Route exact path='/people'>
-            <People />
-          </Route>
-          <Route exact path='/planets'>
-            <Planets />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route exact path="/" element={<Home/>} />
+          <Route exact path='/people' element={<People/>}/>
+          <Route exact path="/planets" element={<Planets/>} />
+        </Routes>
       </Container>
     </Router>
 

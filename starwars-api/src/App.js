@@ -10,12 +10,12 @@ function App() {
   useEffect(() => {
     async function fetchPeople() {
       let res = await fetch('https://swapi.dev/api/people/?format=json');
-      let data = res.json();
+      let data = await  res.json();
       setPeople(data.results)
     }
     async function fetchPlanets() {
       let res = await fetch('https://swapi.dev/api/planets/?format=json');
-      let data = res.json();
+      let data = await res.json();
       setPlanets(data.results)
     }
 
@@ -24,8 +24,8 @@ function App() {
 
   }, [])
 
-  console.log ('people', people);
-  console.log ('planets', planets);
+  console.log ('data', people);
+
 
   return (
     <div className="App">

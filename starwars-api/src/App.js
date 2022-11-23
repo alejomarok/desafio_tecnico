@@ -18,16 +18,19 @@ function App() {
       let res = await fetch('https://swapi.dev/api/people/?format=json');
       let data = await  res.json();
       setPeople(data.results)
+      setLoading(false);
+
     }
     async function fetchPlanets() {
       let res = await fetch('https://swapi.dev/api/planets/?format=json');
       let data = await res.json();
       setPlanets(data.results)
+      setLoading(false);
+
     }
 
     fetchPeople();
     fetchPlanets();
-    setLoading(false);
   }, [])
 
   console.log ('data', people);
@@ -46,8 +49,8 @@ function App() {
         ) : (
         <Routes>
           <Route exact path="/" element={<Home/>} />
-          <Route exact path='/people' element={<People/>}/>
-          <Route exact path="/planets" element={<Planets/>} />
+          <Route exact path='/people' element={<People data={people}/>}/>
+          <Route exact path="/planets" element={<Planets data={planets}/>} />
         </Routes>
         )}
       </Container>

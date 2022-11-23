@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import Navbar from './components/Navbar';
+import {BrowserRouter as Router, Switch, Route} from 'react-roter-dom'; 
+
 
 function App() {
   const [people, setPeople] = useState([]);
@@ -29,7 +31,7 @@ function App() {
 
   return (
     <div className="App">
-      hola
+      <Navbar />
     </div>
   );
 }

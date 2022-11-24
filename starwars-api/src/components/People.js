@@ -1,18 +1,24 @@
-import React from 'react'
+import React, { useReducer }  from 'react'
 import { Card, Grid } from 'semantic-ui-react';
+import people from '../App';
+import query from '../App'
+
 
 
 export default function People({ data }) {
   return (
     <div>
         <h1>People</h1>
+
         <Grid columns={3}>
-            {data.map((people, i ) => {
+            {people.filter((people)=>
+                people.name.toLowercase().includes(query)
+            ).map((people, i ) => {
                 return(
                     <Grid.Column key={i} >
                      <Card>
                         <Card.Content>
-                            <Card.Header>
+                            <Card.Header key={people.name}>
                                 {people.name}
                             </Card.Header>
                             <Card.Description>
@@ -31,3 +37,5 @@ export default function People({ data }) {
     </div>
   )
 }
+
+

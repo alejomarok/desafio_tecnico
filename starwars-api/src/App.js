@@ -8,10 +8,17 @@ import Planets from './components/Planets';
 
 
 function App() {
+
+
+
+    const [query, setQuery] = useState("");
+    console.log(query)
+
+
   const [people, setPeople] = useState([]);
   const [planets, setPlanets] = useState([]);
   const [loading, setLoading] = useState(true);
-
+console.log(people.filter(people=>people.name.toLowerCase().includes("Luke")))
 
   useEffect(() => {
     async function fetchPeople() {
@@ -28,19 +35,23 @@ function App() {
       setLoading(false);
 
     }
+    
+          fetchPeople();
+          fetchPlanets();
 
-    fetchPeople();
-    fetchPlanets();
+
   }, [])
 
-  console.log ('data', people);
+  
 
 
   return (
     <>
+    
 
     <Router>   
       <Navbar />
+      <input type="text" placeholder="search..." className="Search" onChange={e=> setQuery(e.target.value)}/>
       <Container>
         {loading ? (
           <Dimmer active inverted>
@@ -57,7 +68,8 @@ function App() {
     </Router>
 
     </>
-  );
+  );    
+
 }
 
 export default App;

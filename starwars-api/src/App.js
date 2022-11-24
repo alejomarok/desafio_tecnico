@@ -6,7 +6,6 @@ import Home from './components/Home';
 import People from './components/People';
 import Planets from './components/Planets';
 
-
 function App() {
 
 
@@ -18,7 +17,8 @@ function App() {
   const [people, setPeople] = useState([]);
   const [planets, setPlanets] = useState([]);
   const [loading, setLoading] = useState(true);
-console.log(people.filter(people=>people.name.toLowerCase().includes("Luke")))
+  
+  console.log(people.filter(people=>people.name.toLowerCase().includes("Luke")))
 
   useEffect(() => {
     async function fetchPeople() {
@@ -48,20 +48,23 @@ console.log(people.filter(people=>people.name.toLowerCase().includes("Luke")))
   return (
     <>
     
-
     <Router>   
       <Navbar />
-      <input type="text" placeholder="search..." className="Search" onChange={e=> setQuery(e.target.value)}/>
+      
       <Container>
         {loading ? (
           <Dimmer active inverted>
           <Loader inverted>Loading</Loader>
           </Dimmer>
         ) : (
+          
         <Routes>
           <Route exact path="/" element={<Home/>} />
-          <Route exact path='/people' element={<People data={people}/>}/>
-          <Route exact path="/planets" element={<Planets data={planets}/>} />
+
+          <Route exact path="/people" element={<People data= {people}/>} />
+
+          
+          <Route exact path="/planets" element={<Planets data= {planets}/>} />
         </Routes>
         )}
       </Container>

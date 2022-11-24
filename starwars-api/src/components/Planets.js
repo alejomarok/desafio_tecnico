@@ -1,4 +1,4 @@
-import React  from 'react'
+import React from 'react'
 import { Card, Grid } from 'semantic-ui-react';
 
 
@@ -6,10 +6,14 @@ import { Card, Grid } from 'semantic-ui-react';
 
 
 export default function Planets({ data }) {
+
+
+    
   return (
+    
     <div>
-        <h1>Planets</h1>
-        <Grid columns={3}>
+        <h1 id='titulo'>Planets</h1>
+        <Grid  columns={3}>
             {data.map((planets, i ) => {
                 return(
                     <Grid.Column key={i} >
